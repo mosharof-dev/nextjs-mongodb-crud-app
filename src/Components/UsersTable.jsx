@@ -21,7 +21,7 @@ const UsersTable = ({ users }) => {
                 <Table.Cell>{user.role}</Table.Cell>
                 <Table.Cell>
                   <div className="flex gap-2">
-                    <Link href={``}>
+                    <Link href={`users/${user._id}`}>
                       <Button variant="primary">Details</Button>
                     </Link>
                     <Link href={``}>
