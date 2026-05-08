@@ -56,9 +56,16 @@ const run = async () => {
     // update a user
     app.patch("/users/:id", async (req, res) => {
       const id = req.params.id;
-      const user = req.body;
+      const updatedUser = req.body;
       const query = { _id: new ObjectId(id) };
-      const result = await usersCollection.updateOne(query, { $set: user });
+      const updateDoc = {
+        $set: {
+          name: updatedUser.name,
+          email: updatedUser.email,
+          role: updatedUser.role,
+        },
+      };
+      const result = await usersCollection.updateOne(query, updateDoc);
       res.send(result);
     });
     // delete a user

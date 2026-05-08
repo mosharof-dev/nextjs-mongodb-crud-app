@@ -6,12 +6,11 @@ import React from "react";
 const EditPage = async ({ params }) => {
   const { id } = await params;
   const user = await getUserById(id);
-
+  console.log(user, "Users Data");
   const updateUserData = async (formData) => {
     "use server";
 
-    await updateUser(id, formData);
-    // revalidateTag("users")
+    return await updateUser(id, formData);
   };
   return (
     // Main wrapper: Center the form and add some top margin

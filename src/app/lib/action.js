@@ -1,8 +1,8 @@
 import { revalidatePath } from "next/cache";
 
-export const createUser = async (fromData) => {
+export const createUser = async (formData) => {
    'use server'
-   const newUser = Object.fromEntries(fromData.entries());
+   const newUser = Object.fromEntries(formData.entries());
     console.log(newUser, 'User Data');
     const res = await fetch('http://localhost:5000/users', {
       method: "POST",
@@ -20,9 +20,9 @@ export const createUser = async (fromData) => {
   };
   
 
-export const updateUser = async (id, fromData) => {
+export const updateUser = async (id, formData) => {
     'use server'
-    const updatedUser = Object.fromEntries(fromData.entries());
+    const updatedUser = Object.fromEntries(formData.entries());
     const res = await fetch(`http://localhost:5000/users/${id}`, {
       method: "PATCH",
       headers: {
@@ -31,9 +31,9 @@ export const updateUser = async (id, fromData) => {
       body: JSON.stringify(updatedUser),
     });
     const data = await res.json();
-    // if(data.modifiedCount > 0){
-    //   revalidatePath('/users')
-    // }
+    if(data.modifiedCount > 0){
+      revalidatePath('/users')
+    }
     console.log(data);
     return data;
 }
