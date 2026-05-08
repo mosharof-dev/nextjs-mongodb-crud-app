@@ -13,7 +13,7 @@ const UsersPage = async () => {
         <h1 className="text-3xl font-bold text-center ">
           Users management {users.length}
         </h1>
-        <AddUsersModal creatUser={createUser} />
+        <AddUsersModal createUser={createUser} />
       </div>
       <UsersTable users={users} deleteUser={deleteUser} />
     </div>

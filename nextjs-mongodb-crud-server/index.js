@@ -53,14 +53,14 @@ const run = async () => {
       res.send(result);
     });
 
-    // // update a user
-    // app.put("/users/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const user = req.body;
-    //   const query = { _id: new ObjectId(id) };
-    //   const result = await usersCollection.updateOne(query, { $set: user });
-    //   res.send(result);
-    // });
+    // update a user
+    app.patch("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const user = req.body;
+      const query = { _id: new ObjectId(id) };
+      const result = await usersCollection.updateOne(query, { $set: user });
+      res.send(result);
+    });
     // delete a user
     app.delete("/users/:id", async (req, res) => {
       const id = req.params.id;

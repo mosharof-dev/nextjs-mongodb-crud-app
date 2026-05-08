@@ -29,14 +29,14 @@ const UsersTable = ({ users, deleteUser }) => {
                     <Link href={`users/${user._id}`}>
                       <Button variant="primary">Details</Button>
                     </Link>
-                    <Link href={``}>
+                    <Link href={`users/${user._id}/edit`}>
                       <Button variant="outline">Edit</Button>
                     </Link>
                     <AlertDialog>
                       <Button variant="danger">Delete </Button>
                       <AlertDialog.Backdrop>
                         <AlertDialog.Container>
-                          <AlertDialog.Dialog className="sm:max-w-[400px]">
+                          <AlertDialog.Dialog className="sm:max-w-100">
                             <AlertDialog.CloseTrigger />
                             <AlertDialog.Header>
                               <AlertDialog.Icon status="danger" />
